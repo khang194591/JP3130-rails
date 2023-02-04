@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  short_description: MyText
+  trailer_url: MyString
+  storyline: MyText
+  release_date: 2023-02-04
+  languages: MyString
+  country_of_origin: MyString
+  production_companies: MyString
+
+two:
+  short_description: MyText
+  trailer_url: MyString
+  storyline: MyText
+  release_date: 2023-02-04
+  languages: MyString
+  country_of_origin: MyString
+  production_companies: MyString

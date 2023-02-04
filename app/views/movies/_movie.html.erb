@@ -1,0 +1,42 @@
+<div id="<%= dom_id movie %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Short description:</strong>
+    <%= movie.short_description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Trailer url:</strong>
+    <%= movie.trailer_url %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Storyline:</strong>
+    <%= movie.storyline %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Release date:</strong>
+    <%= movie.release_date %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Languages:</strong>
+    <%= movie.languages %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Country of origin:</strong>
+    <%= movie.country_of_origin %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Production companies:</strong>
+    <%= movie.production_companies %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this movie", movie, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this movie', edit_movie_path(movie), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

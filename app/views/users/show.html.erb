@@ -1,0 +1,27 @@
+<div class='flex flex-col min-w-[480px] max-w-[640px] p-10 border-2 border-slate-900 mx-auto rounded-lg my-4 bg-white'>
+
+  <h2 class='text-3xl font-bold text-center mb-6'>プロフィール</h2>
+
+  <div class="flex justify-center mb-4">
+    <% if current_user.avatar.attached? %>
+      <%= image_tag(current_user.avatar, style: 'width:200px;height:200px;border-radius:9999px') %>
+    <% else %>
+      <%= image_tag('/avatar.png', style: 'width:200px;height:200px;border-radius:9999px') %>
+    <% end %>
+
+  </div>
+
+  <div class="inline-flex mb-4">
+    <p class="font-semibold">名前: </p>
+    <%= current_user.name %>
+  </div>
+
+  <div class="inline-flex mb-4">
+    <p class="font-semibold">メールアドレス: </p>
+    <%= current_user.email %>
+  </div>
+
+  <a class="btn-primary text-center" href="/users/edit">プロフィールを更新</a>
+
+  <span class='my-2'></span>
+</div>
