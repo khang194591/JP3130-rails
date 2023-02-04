@@ -1,24 +1,33 @@
-# README
+# Mô tả chương trình
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Yêu cầu môi trường
 
-Things you may want to cover:
+- `ruby 2.7.x`
+- `Rails 6.1.x`
 
-* Ruby version
+# Cài đặt chương trình
 
-* System dependencies
+- `bundle install`
+- `yarn install --check-files`
+- `rake db:migrate`
 
-* Configuration
+# Chạy chương trình
 
-* Database creation
+- `./bin/dev`
 
-* Database initialization
+# Các chức năng đã hoàn thành
 
-* How to run the test suite
+- [x] Layout gồm có navbar và content
+- [x] Xác thực người dùng
+  - `/users/sign-in`
+  - `/users/sign-up`
+- [x] Xem, cập nhật thông tin người dùng (email, avatar, name)
+  - `/users/show`
+  - `/users/edit`
 
-* Services (job queues, cache servers, search engines, etc.)
+# Các chức năng cần hoàn thiện
 
-* Deployment instructions
+- [ ] Thêm footer vào layout và thanh tìm kiếm vào header
+- ...
 
-* ...
+# Note
