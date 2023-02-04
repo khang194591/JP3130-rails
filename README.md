@@ -10,6 +10,7 @@
 - `bundle install`
 - `yarn install --check-files`
 - `rake db:migrate`
+- `bundle exec rake assets:precompile`
 
 # Chạy chương trình
 
