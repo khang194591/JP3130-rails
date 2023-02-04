@@ -1,42 +1,56 @@
 <div id="<%= dom_id movie %>">
+
   <p class="my-5">
-    <strong class="block font-medium mb-1">Short description:</strong>
+    <strong class="block font-medium mb-1">タイトル:</strong>
+    <%= movie.title %>
+  </p>
+
+
+  <% if movie.cover_image.attached? %>
+          <%= image_tag(movie.cover_image, style: 'width:200px;height:300px;') %>
+        <% else %>
+          <%= image_tag('/avatar.png', style: 'width:200px;height:300px;') %>
+        <% end %>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">簡単な説明:</strong>
     <%= movie.short_description %>
   </p>
 
+
   <p class="my-5">
-    <strong class="block font-medium mb-1">Trailer url:</strong>
-    <%= movie.trailer_url %>
+    <strong class="block font-medium mb-1">予告編:</strong>
+    <iframe width="560" height="315" src="<%= movie.trailer_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Storyline:</strong>
+    <strong class="block font-medium mb-1">ストーリー:</strong>
     <%= movie.storyline %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Release date:</strong>
+    <strong class="block font-medium mb-1">発売日:</strong>
     <%= movie.release_date %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Languages:</strong>
+    <strong class="block font-medium mb-1">言語:</strong>
     <%= movie.languages %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Country of origin:</strong>
+    <strong class="block font-medium mb-1">原産国:</strong>
     <%= movie.country_of_origin %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Production companies:</strong>
+    <strong class="block font-medium mb-1">制作会社:</strong>
     <%= movie.production_companies %>
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this movie", movie, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this movie', edit_movie_path(movie), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "見せる", movie, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to '編集', edit_movie_path(movie), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

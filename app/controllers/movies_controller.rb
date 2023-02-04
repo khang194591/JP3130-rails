@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_movie, only: %i[ show edit update destroy ]
 
   # GET /movies or /movies.json
@@ -58,13 +59,14 @@ class MoviesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_movie
-      @movie = Movie.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def movie_params
-      params.require(:movie).permit(:short_description, :trailer_url, :storyline, :release_date, :languages, :country_of_origin, :production_companies)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def movie_params
+    params.require(:movie).permit(:title, :cover_image, :short_description, :trailer_url, :storyline, :release_date, :languages, :country_of_origin, :production_companies)
+  end
 end
