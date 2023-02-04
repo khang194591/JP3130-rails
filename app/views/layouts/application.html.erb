@@ -1,16 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Team04</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>映画</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <script>
+      window.onload = function toggleModal() {
+          let x = document.getElementById('modal-app');
+          setTimeout(function () {
+              x.removeAttribute('open');
+          }, 3000);
+      }
+  </script>
+</head>
 
-  <body>
+<body>
+<% if notice || alert %>
+  <dialog open id="modal-app" class="absolute bottom-[10%] rounded-lg shadow px-4 py-3 bg-slate-900 text-white">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </dialog>
+<% end %>
+<main class="flex flex-col bg-slate-100 h-screen w-screen">
+  <header class='inline-flex items-center w-full h-[72px] bg-white border-b-2 border-slate-900 px-12'>
+    <a class="h-12 w-12 flex items-center justify-center rounded-full bg-slate-900 text-white text-2xl" href="/">四</a>
+    <span class="flex-1"></span>
+    <div class="inline-flex items-center gap-2">
+      <% if user_signed_in? %>
+        <p>
+          こにちは、<a class="font-semibold text-blue-500 hover:underline" href="/users/show"> <%= current_user.name || current_user.email %> </a>
+        </p>
+        <%= button_to "サインアウト", destroy_user_session_path, method: :delete, :class => 'font-semibold text-red-500 btn-ghost' %>
+      <% else %>
+        <a class='btn-ghost' href="/users/sign_in">サインイン</a>
+        <a class='btn-primary' href="/users/sign_up">ユーザ登録</a>
+      <% end %>
+    </div>
+  </header>
+  <div class="flex-1 overflow-auto">
     <%= yield %>
-  </body>
+  </div>
+</main>
+</body>
 </html>

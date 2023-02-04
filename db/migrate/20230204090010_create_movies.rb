@@ -1,6 +1,7 @@
 class CreateMovies < ActiveRecord::Migration[6.1]
   def change
     create_table :movies do |t|
+      t.string :title
       t.text :short_description
       t.string :trailer_url
       t.text :storyline
