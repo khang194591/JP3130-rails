@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_movie, only: %i[ show edit update destroy ]
+  before_action :set_categories
 
   # GET /movies or /movies.json
   def index
@@ -11,6 +12,12 @@ class MoviesController < ApplicationController
   def show
   end
 
+  def search
+    @movies = Movie.where(category_id: params[:category_id])
+
+    # @movies = Movie.search(params)
+    render 'index'
+  end
   # GET /movies/new
   def new
     @movie = Movie.new
@@ -65,8 +72,11 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
   end
 
+  def set_categories
+    @categories = Category.all.order(:name)
+  end
   # Only allow a list of trusted parameters through.
   def movie_params
-    params.require(:movie).permit(:title, :cover_image, :short_description, :trailer_url, :storyline, :release_date, :languages, :country_of_origin, :production_companies)
+    params.require(:movie).permit(:title, :cover_image, :short_description, :trailer_url, :storyline, :release_date, :languages, :country_of_origin, :production_companies, :category_id)
   end
 end

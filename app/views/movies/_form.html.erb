@@ -32,7 +32,11 @@
     <%= form.label :short_description,"簡単な説明",class: "text-lg font-semibold" %>
     <%= form.text_area :short_description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
-
+  
+  <div class="my-5">
+    <%= form.label :category,"カテゴリ",class: "text-lg font-semibold" %>
+    <%= form.select :category_id, options_for_select(@categories.collect { |cat| [cat.name, cat.id]}), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"%>
+  </div>
   <div class="my-5">
     <%= form.label :trailer_url,"予告編のURL",class: "text-lg font-semibold" %>
     <%= form.text_field :trailer_url, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>

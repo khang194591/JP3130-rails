@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :categories
+  get 'movies/search'
   get 'users/show'
   resources :movies
   devise_for :users

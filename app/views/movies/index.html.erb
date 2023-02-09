@@ -1,6 +1,10 @@
 <div class="w-full px-16 py-8">
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl border-l-4 border-blue-500">映画リスト</h1>
+    <%= form_tag movies_search_path, method: :get do |f| %>
+      <%= select_tag 'category_id', options_for_select(Category.all.map{|el| [el.name, el.id]}), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <%= submit_tag '検索', class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <% end %>
     <%= link_to '新規作成', new_movie_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
