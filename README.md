@@ -32,3 +32,5 @@
 - ...
 
 # Note
+
+- Lỗi hostname: Thêm `config.hosts << ...` vào file `config/environments/development.rb`
