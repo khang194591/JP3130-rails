@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_04_090445) do
+ActiveRecord::Schema.define(version: 2023_02_09_040209) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -38,6 +38,19 @@ ActiveRecord::Schema.define(version: 2023_02_04_090445) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categories_movies", id: false, force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "movie_id", null: false
+    t.index ["category_id"], name: "index_categories_movies_on_category_id"
+    t.index ["movie_id"], name: "index_categories_movies_on_movie_id"
   end
 
   create_table "movies", force: :cascade do |t|

@@ -7,10 +7,10 @@
 
 
   <% if movie.cover_image.attached? %>
-          <%= image_tag(movie.cover_image, style: 'width:200px;height:300px;') %>
-        <% else %>
-          <%= image_tag('/avatar.png', style: 'width:200px;height:300px;') %>
-        <% end %>
+    <%= image_tag(movie.cover_image, style: 'width:200px;height:300px;') %>
+  <% else %>
+    <%= image_tag('/avatar.png', style: 'width:200px;height:300px;') %>
+  <% end %>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">簡単な説明:</strong>
@@ -47,6 +47,15 @@
     <strong class="block font-medium mb-1">制作会社:</strong>
     <%= movie.production_companies %>
   </p>
+
+  <div class="my-5 inline-flex">
+    <strong class="block font-medium mb-1">カテゴリー :</strong>
+    <% movie.categories.each do |category| %>
+      <p class="px-2 py-1 rounded-lg bg-blue-300 mx-1">
+        <%= category.text %>
+      </p>
+    <% end %>
+  </div>
 
   <% if action_name != "show" %>
     <%= link_to "見せる", movie, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>

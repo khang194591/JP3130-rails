@@ -12,7 +12,7 @@
   <% end %>
 
   <div class='flex flex-col gap-2 my-5'>
-    <%= form.label :cover_image, "表紙画像",class: "text-lg font-semibold" %>
+    <%= form.label :cover_image, "表紙画像", class: "text-lg font-semibold" %>
     <div class="inline-flex items-center gap-2">
       <% if @movie.cover_image.attached? %>
         <%= image_tag(@movie.cover_image, style: 'width:120px;height:180px;') %>
@@ -24,44 +24,52 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :title, "タイトル",class: "text-lg font-semibold" %>
+    <%= form.label :title, "タイトル", class: "text-lg font-semibold" %>
     <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :short_description,"簡単な説明",class: "text-lg font-semibold" %>
+    <%= form.label :short_description, "簡単な説明", class: "text-lg font-semibold" %>
     <%= form.text_area :short_description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :trailer_url,"予告編のURL",class: "text-lg font-semibold" %>
+    <%= form.label :trailer_url, "予告編のURL", class: "text-lg font-semibold" %>
     <%= form.text_field :trailer_url, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :storyline,"ストーリー",class: "text-lg font-semibold" %>
+    <%= form.label :storyline, "ストーリー", class: "text-lg font-semibold" %>
     <%= form.text_area :storyline, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :release_date,"発売日",class: "text-lg font-semibold" %>
+    <%= form.label :release_date, "発売日", class: "text-lg font-semibold" %>
     <%= form.date_field :release_date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :languages,"言語",class: "text-lg font-semibold" %>
+    <%= form.label :languages, "言語", class: "text-lg font-semibold" %>
     <%= form.text_field :languages, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :country_of_origin,"原産国",class: "text-lg font-semibold" %>
+    <%= form.label :country_of_origin, "原産国", class: "text-lg font-semibold" %>
     <%= form.text_field :country_of_origin, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :production_companies,"制作会社",class: "text-lg font-semibold" %>
+    <%= form.label :production_companies, "制作会社", class: "text-lg font-semibold" %>
     <%= form.text_field :production_companies, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
+
+  <div class="my-5">
+    <%= form.label :categories, "カテゴリー", class: "text-lg font-semibold" %>
+    <a class="px-2 py-1 rounded-lg bg-blue-500 text-white ml-16" href="/categories/new">カテゴリを作成</a>
+    <br>
+    <%= form.collection_select :category_ids, Category.all, :id, :text, {}, { multiple: true } %>
+  </div>
+
 
   <div class="inline">
     <%= form.submit "映画を更新", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
