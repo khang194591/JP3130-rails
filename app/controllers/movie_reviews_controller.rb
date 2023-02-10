@@ -24,8 +24,9 @@ class MovieReviewsController < ApplicationController
     @movie_review = MovieReview.new(movie_review_params)
 
     respond_to do |format|
+        url = "movies/#{@movie_review.movie_id.to_s}"
       if @movie_review.save
-        format.html { redirect_to movie_review_url(@movie_review), notice: "Movie review was successfully created." }
+        format.html { redirect_to movie_review_url(@movie_review), notice: "映画のレビューが正常に作成されました。" }
         format.json { render :show, status: :created, location: @movie_review }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class MovieReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @movie_review.update(movie_review_params)
-        format.html { redirect_to movie_review_url(@movie_review), notice: "Movie review was successfully updated." }
+        format.html { redirect_to movie_review_url(@movie_review), notice: "映画のレビューが正常に更新されました。" }
         format.json { render :show, status: :ok, location: @movie_review }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class MovieReviewsController < ApplicationController
     @movie_review.destroy
 
     respond_to do |format|
-      format.html { redirect_to movie_reviews_url, notice: "Movie review was successfully destroyed." }
+      format.html { redirect_to movie_reviews_url, notice: "映画のレビューは無事破棄されました。" }
       format.json { head :no_content }
     end
   end

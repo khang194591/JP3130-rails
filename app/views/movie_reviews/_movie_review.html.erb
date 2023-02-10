@@ -1,12 +1,12 @@
 <div id="<%= dom_id movie_review %>">
   <p class="my-5">
     <strong class="block font-medium mb-1">User:</strong>
-    <%= movie_review.user_id %>
+    <%= movie_review.user.name %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Movie:</strong>
-    <%= movie_review.movie_id %>
+    <%= movie_review.movie.title %>
   </p>
 
   <p class="my-5">
