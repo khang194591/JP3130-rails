@@ -40,6 +40,10 @@ ActiveRecord::Schema.define(version: 2023_02_10_011139) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "movie_reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "movie_id"
+    t.text "review"
   create_table "actors", force: :cascade do |t|
     t.string "name"
     t.date "date_of_birth"

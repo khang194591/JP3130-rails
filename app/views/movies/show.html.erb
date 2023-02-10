@@ -1,3 +1,5 @@
+<% review = MovieReview.new %>
+
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
 
@@ -8,5 +10,30 @@
       <%= button_to '消去', movie_path(@movie), method: :delete, class: "btn bg-red-200" %>
     </div>
     <%= link_to '映画に戻る', movies_path, class: "btn-ghost hover:bg-blue-100" %>
+    
   </div>
+  <div>
+      <%= form_with(model: review, url: movie_reviews_url) do |form| %>
+      <!-- <h2>Review</h2> -->
+      <div>
+        <%= form.label :review, style: "display: block" %>
+        <%= form.text_area :review %>
+        <%= form.hidden_field :user_id, :value => current_user.id %>
+        <%= form.hidden_field :movie_id, :value => @movie.id %>
+      </div>
+      <div>
+        <%= form.submit %>
+      </div>
+    <% end %>
+    
+    <h2><b>レビューリスト</b></h2>
+  <ul>
+    <% @movie.movie_review.each do |movie_review| %>
+      <li></li><b><i><%= movie_review.user.name %></i></b><br>
+      <%= movie_review.review %> <br>
+      </li>
+    <% end %>
+  </ul> 
+  </div>
+
 </div>
