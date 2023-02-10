@@ -24,9 +24,9 @@ class MovieReviewsController < ApplicationController
     @movie_review = MovieReview.new(movie_review_params)
 
     respond_to do |format|
-        url = "movies/#{@movie_review.movie_id.to_s}"
+      url = "movies/#{@movie_review.movie_id.to_s}"
       if @movie_review.save
-        format.html { redirect_to movie_review_url(@movie_review), notice: "映画のレビューが正常に作成されました。" }
+        format.html { redirect_to movie_url(@movie_review.movie_id), notice: "映画のレビューが正常に作成されました。" }
         format.json { render :show, status: :created, location: @movie_review }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -59,13 +59,14 @@ class MovieReviewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_movie_review
-      @movie_review = MovieReview.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def movie_review_params
-      params.require(:movie_review).permit(:user_id, :movie_id, :review)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_movie_review
+    @movie_review = MovieReview.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def movie_review_params
+    params.require(:movie_review).permit(:user_id, :movie_id, :review)
+  end
 end

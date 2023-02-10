@@ -10,30 +10,42 @@
       <%= button_to '消去', movie_path(@movie), method: :delete, class: "btn bg-red-200" %>
     </div>
     <%= link_to '映画に戻る', movies_path, class: "btn-ghost hover:bg-blue-100" %>
-    
+
   </div>
-  <div>
-      <%= form_with(model: review, url: movie_reviews_url) do |form| %>
-      <!-- <h2>Review</h2> -->
+  <div class="mt-6">
+    <%= form_with(model: review, url: movie_reviews_url) do |form| %>
       <div>
-        <%= form.label :review, style: "display: block" %>
-        <%= form.text_area :review %>
+        <%= form.label :review, "レビュー", class: "text-xl font-semibold" %>
         <%= form.hidden_field :user_id, :value => current_user.id %>
         <%= form.hidden_field :movie_id, :value => @movie.id %>
       </div>
-      <div>
-        <%= form.submit %>
+      <div class="inline-flex">
+        <%= form.text_field :review %>
+        <%= form.submit "送信", class: "ml-2 btn-primary" %>
       </div>
     <% end %>
-    
-    <h2><b>レビューリスト</b></h2>
-  <ul>
-    <% @movie.movie_review.each do |movie_review| %>
-      <li></li><b><i><%= movie_review.user.name %></i></b><br>
-      <%= movie_review.review %> <br>
-      </li>
-    <% end %>
-  </ul> 
+    <ul>
+      <% @movie.movie_review.each do |movie_review| %>
+        <li class="flex flex-row my-2">
+          <% if movie_review.user.avatar.attached? %>
+            <%= image_tag(movie_review.user.avatar, style: 'width:40px;height:40px;border-radius:9999px;') %>
+          <% else %>
+            <%= image_tag('/avatar.png', style: 'width:40px;height:40px;border-radius:9999px;') %>
+          <% end %>
+          <div class="flex flex-1 flex-col px-3 py-2 bg-slate-50 ml-2 rounded-lg">
+            <div class="inline-flex justify-between items-center">
+              <b><i><%= movie_review.user.name %></i></b>
+              <p class="text-sm text-slate-500">
+                <%= movie_review.created_at.strftime("%R %B %d, %Y") %>
+              </p>
+            </div>
+            <div>
+              <%= movie_review.review %> <br>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
 </div>
