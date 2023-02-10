@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
 
   # GET /movies/1 or /movies/1.json
   def show
+      @movie_review = MovieReview.new
   end
 
   # GET /movies/new
