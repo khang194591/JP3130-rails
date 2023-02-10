@@ -1,4 +1,4 @@
-<div id="<%= dom_id movie %>">
+<div id="<%= dom_id movie %>" class="mt-8">
 
   <p class="my-5">
     <strong class="block font-medium mb-1">タイトル:</strong>
@@ -48,15 +48,18 @@
     <%= movie.production_companies %>
   </p>
 
-  <div class="my-5 inline-flex">
+  <div class="my-5 flex flex-row">
     <strong class="block font-medium mb-1">カテゴリー :</strong>
     <% movie.categories.each do |category| %>
-      <p class="px-2 py-1 rounded-lg bg-blue-300 mx-1">
-        <%= category.text %>
-      </p>
+      <%= link_to "#{category.text}", "/movies?category=#{category.id}", class: "px-2 py-1 rounded-lg bg-blue-300 mx-1 hover:bg-blue-400" %>
     <% end %>
   </div>
-
+  <div class="my-5 flex flex-row">
+    <strong class="block font-medium mb-1">俳優 :</strong>
+    <% movie.actors.each do |actor| %>
+      <%= link_to "#{actor.name}", "/actors/#{actor.id}", class: "px-2 py-1 rounded-lg bg-blue-300 mx-1 hover:bg-blue-400" %>
+    <% end %>
+  </div>
   <% if action_name != "show" %>
     <%= link_to "見せる", movie, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to '編集', edit_movie_path(movie), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>

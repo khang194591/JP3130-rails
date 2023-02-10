@@ -1,8 +1,12 @@
 <div class="w-full px-16 py-8">
   <div class="flex flex-row gap-20">
-    <div class="min-w-[320px] bg-white rounded-lg ml-8 px-4 py-3">
+    <div class="min-w-[320px] h-fit bg-white rounded-lg ml-8 px-4 py-3">
       <%= form_with url: movies_path, method: :get, class: "flex flex-col" do |form| %>
-        <%= form.label :category, "カテゴリー", class: "text-2xl font-semibold" %>
+        <div class="inline-flex justify-between">
+          <%= form.label :category, "カテゴリー", class: "text-2xl font-semibold" %>
+          <a class="px-2 py-1 rounded-lg bg-blue-500 text-white ml-16" href="/categories/new">カテゴリを作成</a>
+        </div>
+
         <div class="">
           <%= form.collection_radio_buttons :category, Category.all, :id, :text do |b| %>
             <div class="radio">
@@ -18,7 +22,7 @@
             </div>
           <% end %>
         </div>
-        <%= submit_tag 'フィルター', class: 'btn-primary ' %>
+        <%= submit_tag 'フィルター', class: 'btn-primary mt-2' %>
       <% end %>
     </div>
     <div class="flex-1 flex flex-col">

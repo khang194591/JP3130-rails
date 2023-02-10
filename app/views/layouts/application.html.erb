@@ -30,12 +30,14 @@
   </dialog>
 <% end %>
 <main class="flex flex-col bg-slate-100 h-screen w-screen">
-  <header class='inline-flex items-center w-full h-[72px] bg-white border-b-2 border-slate-900 px-12'>
+  <header class='inline-flex items-center w-full h-[72px] bg-white shadow-lg px-12'>
     <a class="h-12 w-12 flex items-center justify-center rounded-full bg-slate-900 text-white text-2xl" href="/">四</a>
+    <a class="btn-outline ml-6" href="/actors">俳優 </a>
+    <a class="btn-outline ml-6" href="/directors">監督</a>
     <div class="flex-1 flex justify-center">
       <%= form_tag(movies_path, method: :get) do %>
         <%= text_field_tag :title, params[:title] %>
-        <%= submit_tag 'サーチ',class:'btn-primary' %>
+        <%= submit_tag 'サーチ', class: 'btn-primary' %>
       <% end %>
     </div>
     <div class="inline-flex items-center gap-2">

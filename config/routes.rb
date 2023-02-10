@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :actors
   resources :categories
   get 'users/show'
   resources :movies
