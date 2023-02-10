@@ -1,0 +1,29 @@
+<div id="<%= dom_id actor %>" class="mt-8">
+
+  <% if actor.image.attached? %>
+    <%= image_tag(actor.image, style: 'width:200px;height:300px;') %>
+  <% else %>
+    <%= image_tag('/avatar.png', style: 'width:200px;height:300px;') %>
+  <% end %>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= actor.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Date of birth:</strong>
+    <%= actor.date_of_birth %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Bio:</strong>
+    <%= actor.bio %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this actor", actor, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this actor', edit_actor_path(actor), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_10_011434) do
+ActiveRecord::Schema.define(version: 2023_02_10_011139) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -44,8 +44,32 @@ ActiveRecord::Schema.define(version: 2023_02_10_011434) do
     t.integer "user_id"
     t.integer "movie_id"
     t.text "review"
+  create_table "actors", force: :cascade do |t|
+    t.string "name"
+    t.date "date_of_birth"
+    t.text "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "actors_movies", id: false, force: :cascade do |t|
+    t.integer "actor_id", null: false
+    t.integer "movie_id", null: false
+    t.index ["actor_id"], name: "index_actors_movies_on_actor_id"
+    t.index ["movie_id"], name: "index_actors_movies_on_movie_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "categories_movies", id: false, force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "movie_id", null: false
+    t.index ["category_id"], name: "index_categories_movies_on_category_id"
+    t.index ["movie_id"], name: "index_categories_movies_on_movie_id"
   end
 
   create_table "movies", force: :cascade do |t|

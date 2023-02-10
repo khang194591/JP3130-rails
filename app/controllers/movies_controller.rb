@@ -4,7 +4,15 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    @movies = Movie.all
+    @movies = if params[:title]
+                Movie.where('title LIKE ?', "%#{params[:title]}%").order(created_at: :desc)
+              else
+                if params[:category] && params[:category] != ""
+                  Movie.joins(:categories).where(:categories => params[:category]).order(created_at: :desc)
+                else
+                  Movie.all.order(created_at: :desc)
+                end
+              end
   end
 
   # GET /movies/1 or /movies/1.json
@@ -38,6 +46,11 @@ class MoviesController < ApplicationController
 
   # PATCH/PUT /movies/1 or /movies/1.json
   def update
+    movie_params[:category_ids].each do |category|
+      if category != ""
+        @movie.categories.append(Category.find_by(id: category))
+      end
+    end
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to movie_url(@movie), notice: "Movie was successfully updated." }
@@ -68,6 +81,7 @@ class MoviesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def movie_params
-    params.require(:movie).permit(:title, :cover_image, :short_description, :trailer_url, :storyline, :release_date, :languages, :country_of_origin, :production_companies)
+    params.require(:movie).permit(:title)
+    params.require(:movie).permit(:title, :cover_image, :short_description, :trailer_url, :storyline, :release_date, :languages, :country_of_origin, :production_companies, category_ids: [], actor_ids: [])
   end
 end
