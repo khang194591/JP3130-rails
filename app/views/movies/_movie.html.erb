@@ -60,6 +60,12 @@
       <%= link_to "#{actor.name}", "/actors/#{actor.id}", class: "btn btn-sm btn-secondary" %>
     <% end %>
   </div>
+  <div class="my-5 flex flex-row">
+    <strong class="block font-medium mb-1">監督 :</strong>
+    <% movie.directors.each do |director| %>
+      <%= link_to "#{director.name}", "/directors/#{director.id}", class: "btn btn-sm btn-secondary" %>
+    <% end %>
+  </div>
   <% if action_name != "show" %>
     <%= link_to "見せる", movie, class: "btn btn-secondary" %>
     <%= link_to '編集', edit_movie_path(movie), class: "btn btn-primary" %>

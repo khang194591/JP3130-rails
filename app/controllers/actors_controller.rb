@@ -1,5 +1,6 @@
 class ActorsController < ApplicationController
   before_action :set_actor, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /actors or /actors.json
   def index
@@ -8,6 +9,7 @@ class ActorsController < ApplicationController
 
   # GET /actors/1 or /actors/1.json
   def show
+    @movies = Movie.joins(:actors).where(:actors => @actor).order(created_at: :desc)
   end
 
   # GET /actors/new

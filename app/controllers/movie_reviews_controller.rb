@@ -1,4 +1,5 @@
 class MovieReviewsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_movie_review, only: %i[ show edit update destroy ]
 
   # GET /movie_reviews or /movie_reviews.json

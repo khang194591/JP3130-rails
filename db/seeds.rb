@@ -4,8 +4,8 @@
 # Examples:
 
 user = User.new(
-  :email => "khang.td@gmail.com",
-  :name => "Khang",
+  :email => "demo@gmail.com",
+  :name => "ドラえもん",
   :password => "123456",
   :password_confirmation => "123456"
 )
@@ -19,6 +19,20 @@ Actor.create([{
                 bio: "Keanu Charles Reeves (/kiˈɑːnuː/ kee-AH-noo;[4][5][6] born September 2, 1964) is a Canadian[b] actor. Born in Beirut and raised in Toronto, Reeves began acting in theatre productions and in television films before making his feature film debut in Youngblood (1986). He had his breakthrough role in the science fiction comedy Bill & Ted's Excellent Adventure (1989), and he reprised his role in its sequels. He gained praise for playing a hustler in the independent drama My Own Private Idaho (1991) and established himself as an action hero with leading roles in Point Break (1991) and Speed (1994)."
               }])
 
+Director.create([{
+                   name: "Hayao Miyazaki",
+                   date_of_birth: "16/08/1954",
+                   bio: "Hayao Miyazaki (宮崎 駿, Miyazaki Hayao, [mijaꜜzaki hajao]; born January 5, 1941) is a Japanese animator, director, producer, screenwriter, author, and manga artist. A co-founder of Studio Ghibli, he has attained international acclaim as a masterful storyteller and creator of Japanese animated feature films, and is widely regarded as one of the most accomplished filmmakers in the history of animation."
+                 }, {
+                   name: "James Cameron",
+                   date_of_birth: "05/01/1941",
+                   bio: "James Francis Cameron CC is a Canadian filmmaker. A major figure in the post-New Hollywood era, he is considered one of the industry's most innovative filmmakers, regularly pushing the boundaries of cinematic capability with his use of novel technologies."
+                 }, {
+                   name: "Chad Stahelski",
+                   date_of_birth: "20/09/1968",
+                   bio: "Chad Stahelski (born September 20, 1968) is an American stuntman and film director. He is known for directing the 2014 film John Wick and directing its three sequels. Stahelski also doubled for Brandon Lee after the fatal accident involving Lee on the set of The Crow (1994) and replaced Lee in the film. He has worked as a stunt coordinator and second unit director on several films."
+                 }])
+
 Movie.create!([{
                  title: "千と千尋の神隠し",
                  short_description: "",
@@ -29,6 +43,7 @@ Movie.create!([{
                  country_of_origin: "Japan",
                  production_companies: "Ghibli",
                  category_ids: %w[1 2],
+                 director_ids: %w[1]
                }, {
                  title: "となりのトトロ",
                  short_description: "",
@@ -39,6 +54,7 @@ Movie.create!([{
                  country_of_origin: "Japan",
                  production_companies: "Ghibli",
                  category_ids: %w[1 2],
+                 director_ids: %w[1]
                }, {
                  title: "火垂るの墓",
                  short_description: "",
@@ -49,6 +65,7 @@ Movie.create!([{
                  country_of_origin: "Japan",
                  production_companies: "Ghibli",
                  category_ids: %w[1 2],
+                 director_ids: %w[1]
                }, {
                  title: "もののけ姫",
                  short_description: "",
@@ -59,6 +76,7 @@ Movie.create!([{
                  country_of_origin: "Japan",
                  production_companies: "Ghibli",
                  category_ids: %w[1 2],
+                 director_ids: %w[1]
                }, {
                  title: "ハウルの動く城",
                  short_description: "",
@@ -69,56 +87,7 @@ Movie.create!([{
                  country_of_origin: "Japan",
                  production_companies: "Ghibli",
                  category_ids: %w[1 2],
-               }, {
-                 title: "Alice in Wonderland",
-                 short_description: "",
-                 trailer_url: "",
-                 storyline: "",
-                 release_date: "07/26/1951",
-                 languages: "English",
-                 country_of_origin: "America",
-                 production_companies: "Disney",
-                 category_ids: %w[1],
-               }, {
-                 title: "Beauty and the Beast",
-                 short_description: "",
-                 trailer_url: "",
-                 storyline: "",
-                 release_date: "11/22/1991",
-                 languages: "English",
-                 country_of_origin: "America",
-                 production_companies: "Disney",
-                 category_ids: %w[1],
-               }, {
-                 title: "Aladdin",
-                 short_description: "",
-                 trailer_url: "",
-                 storyline: "",
-                 release_date: "11/25/1992",
-                 languages: "English",
-                 country_of_origin: "America",
-                 production_companies: "Disney",
-                 category_ids: %w[1],
-               }, {
-                 title: "The Lion King	",
-                 short_description: "",
-                 trailer_url: "",
-                 storyline: "",
-                 release_date: "06/15/1994",
-                 languages: "English",
-                 country_of_origin: "America",
-                 production_companies: "Disney",
-                 category_ids: %w[1],
-               }, {
-                 title: "Toy Story",
-                 short_description: "",
-                 trailer_url: "",
-                 storyline: "",
-                 release_date: "11/22/1995",
-                 languages: "English",
-                 country_of_origin: "America",
-                 production_companies: "Disney",
-                 category_ids: %w[1],
+                 director_ids: %w[1]
                }, {
                  title: "John Wick",
                  short_description: "An ex-hit-man comes out of retirement to track down the gangsters that killed his dog and took his car.",
@@ -130,6 +99,7 @@ Movie.create!([{
                  production_companies: "Summit Entertainment",
                  category_ids: %w[1],
                  actor_ids: %w[1],
+                 director_ids: %w[3]
                }, {
                  title: "John Wick: Chapter 2",
                  short_description: "After returning to the criminal underworld to repay a debt, John Wick discovers that a large bounty has been put on his life.",
@@ -141,8 +111,9 @@ Movie.create!([{
                  production_companies: "Summit Entertainment",
                  category_ids: %w[1],
                  actor_ids: %w[1],
+                 director_ids: %w[3]
                }, {
-                 title: "John Wick: Chapter 3 - Parabellum",
+                 title: "John Wick: Chapter 3",
                  short_description: "John Wick is on the run after killing a member of the international assassins' guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.",
                  trailer_url: "https://www.youtube.com/embed/pU8-7BX9uxs",
                  storyline: "In this third installment of the adrenaline-fueled action franchise, skilled assassin John Wick (Keanu Reeves) returns with a $14 million price tag on his head and an army of bounty-hunting killers on his trail. After killing a member of the shadowy international assassin's guild, the High Table, John Wick is excommunicado, but the world's most ruthless hit men and women await his every turn.",
@@ -152,5 +123,6 @@ Movie.create!([{
                  production_companies: "Summit Entertainment",
                  category_ids: %w[1],
                  actor_ids: %w[1],
+                 director_ids: %w[3]
                },])
 

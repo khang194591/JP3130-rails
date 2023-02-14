@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_10_011434) do
+ActiveRecord::Schema.define(version: 2023_02_14_062905) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -66,6 +66,21 @@ ActiveRecord::Schema.define(version: 2023_02_10_011434) do
     t.integer "movie_id", null: false
     t.index ["category_id"], name: "index_categories_movies_on_category_id"
     t.index ["movie_id"], name: "index_categories_movies_on_movie_id"
+  end
+
+  create_table "directors", force: :cascade do |t|
+    t.string "name"
+    t.date "date_of_birth"
+    t.text "bio"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "directors_movies", id: false, force: :cascade do |t|
+    t.integer "director_id", null: false
+    t.integer "movie_id", null: false
+    t.index ["director_id"], name: "index_directors_movies_on_director_id"
+    t.index ["movie_id"], name: "index_directors_movies_on_movie_id"
   end
 
   create_table "movie_reviews", force: :cascade do |t|
