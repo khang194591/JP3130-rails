@@ -5,11 +5,11 @@
 
     <%= render @movie %>
 
-    <%= link_to '編集', edit_movie_path(@movie), class: "btn-primary" %>
+    <%= link_to '編集', edit_movie_path(@movie), class: "btn" %>
     <div class="inline-block ml-2">
-      <%= button_to '消去', movie_path(@movie), method: :delete, class: "btn bg-red-200" %>
+      <%= button_to '消去', movie_path(@movie), method: :delete, class: "btn btn-error" %>
     </div>
-    <%= link_to '映画に戻る', movies_path, class: "btn-ghost hover:bg-blue-100" %>
+    <%= link_to '映画に戻る', movies_path, class: "btn btn-ghost" %>
 
   </div>
   <div class="mt-6">
@@ -19,16 +19,16 @@
         <%= form.hidden_field :user_id, :value => current_user.id %>
         <%= form.hidden_field :movie_id, :value => @movie.id %>
       </div>
-      <div class="inline-flex">
-        <%= form.text_field :review %>
-        <%= form.submit "送信", class: "ml-2 btn-primary" %>
+      <div class="input-group">
+        <%= form.text_field :review, :class => "input input-bordered" %>
+        <%= form.submit "送信", class: "btn" %>
       </div>
     <% end %>
     <ul>
       <% @movie.movie_review.each do |movie_review| %>
         <li class="flex flex-row my-2">
           <% if movie_review.user.avatar.attached? %>
-            <%= image_tag(movie_review.user.avatar, style: 'width:40px;height:40px;border-radius:9999px;') %>
+            <%= image_tag(movie_review.user.avatar, style: 'width:40px;height:40px;border-radius:9999px;object-fit:cover;') %>
           <% else %>
             <%= image_tag('/avatar.png', style: 'width:40px;height:40px;border-radius:9999px;') %>
           <% end %>

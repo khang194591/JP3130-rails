@@ -19,7 +19,7 @@
       <% else %>
         <%= image_tag('/avatar.png', style: 'width:120px;height:180px;') %>
       <% end %>
-      <%= form.file_field :cover_image, class: "" %>
+      <%= form.file_field :cover_image, class: "file-input file-input-bordered" %>
     </div>
   </div>
 
@@ -71,6 +71,6 @@
 
 
   <div class="inline">
-    <%= form.submit "映画を更新", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit "映画を更新", class: "btn" %>
   </div>
 <% end %>

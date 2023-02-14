@@ -32,12 +32,14 @@
 <main class="flex flex-col bg-slate-100 h-screen w-screen">
   <header class='inline-flex items-center w-full h-[72px] bg-white shadow-lg px-12'>
     <a class="h-12 w-12 flex items-center justify-center rounded-full bg-slate-900 text-white text-2xl" href="/">四</a>
-    <a class="btn-outline ml-6" href="/actors">俳優 </a>
-    <a class="btn-outline ml-6" href="/directors">監督</a>
+    <a class="btn btn-outline ml-6" href="/actors">俳優 </a>
+    <a class="btn btn-outline ml-6" href="/directors">監督</a>
     <div class="flex-1 flex justify-center">
       <%= form_tag(movies_path, method: :get) do %>
-        <%= text_field_tag :title, params[:title] %>
-        <%= submit_tag 'サーチ', class: 'btn-primary' %>
+      <div class='input-group'>
+        <%= text_field_tag :title, params[:title],:class=>"input input-bordered" %>
+        <%= submit_tag 'サーチ', class: 'btn' %>
+      </div>
       <% end %>
     </div>
     <div class="inline-flex items-center gap-2">
@@ -45,10 +47,10 @@
         <p>
           こにちは、<a class="font-semibold text-blue-500 hover:underline" href="/users/show"> <%= current_user.name || current_user.email %> </a>
         </p>
-        <%= button_to "サインアウト", destroy_user_session_path, method: :delete, :class => 'font-semibold text-red-500 btn-ghost' %>
+        <%= button_to "サインアウト", destroy_user_session_path, method: :delete, :class => 'btn btn-outline btn-error' %>
       <% else %>
-        <a class='btn-ghost' href="/users/sign_in">サインイン</a>
-        <a class='btn-primary' href="/users/sign_up">ユーザ登録</a>
+        <a class='btn btn-ghost' href="/users/sign_in">サインイン</a>
+        <a class='btn' href="/users/sign_up">ユーザ登録</a>
       <% end %>
     </div>
   </header>

@@ -4,31 +4,30 @@
       <%= form_with url: movies_path, method: :get, class: "flex flex-col" do |form| %>
         <div class="inline-flex justify-between">
           <%= form.label :category, "カテゴリー", class: "text-2xl font-semibold" %>
-          <a class="px-2 py-1 rounded-lg bg-blue-500 text-white ml-16" href="/categories/new">カテゴリを作成</a>
+          <a class="btn btn-sm btn-primary" href="/categories/new">カテゴリを作成</a>
         </div>
 
         <div class="">
           <%= form.collection_radio_buttons :category, Category.all, :id, :text do |b| %>
-            <div class="radio">
+            <div class="form-control">
               <%= b.label do %>
-                <div class="inline-flex items-center">
-                  <%= b.radio_button %>
-                  <div class="ml-2">
+                <div class="label cursor-pointer w-fit gap-2">
+                  <%= b.radio_button :class => "radio" %>
+                  <div class="label-text">
                     <%= b.text %>
                   </div>
                 </div>
               <% end %>
-              <br>
             </div>
           <% end %>
         </div>
-        <%= submit_tag 'フィルター', class: 'btn-primary mt-2' %>
+        <%= submit_tag 'フィルター', class: 'btn mt-2' %>
       <% end %>
     </div>
     <div class="flex-1 flex flex-col">
       <div class="flex justify-between items-center">
         <h1 class="font-bold text-4xl border-l-4 border-blue-500">映画リスト</h1>
-        <%= link_to '新規作成', new_movie_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+        <%= link_to '新規作成', new_movie_path, class: "btn btn-lg btn-primary" %>
       </div>
       <div id="movies" class="min-w-full flex flex-wrap mt-6 gap-x-8 gap-y-6">
         <% @movies.each do |movie| %>
